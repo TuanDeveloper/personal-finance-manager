@@ -1,0 +1,283 @@
+:root {
+  --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --primary-color: #2e7d32;
+  --secondary-color: #f5f5f5;
+  --text-color: #333;
+  --income-color: #2ecc71;
+  --expense-color: #e74c3c;
+  --bg-color: #f7f3f3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+}
+
+.container {
+  width: 100%;
+  max-width: 450px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  padding: 30px;
+  margin-top: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--primary-color);
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+}
+
+/* Dashboard Thống kê */
+.balance-container {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.balance-container h4 {
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.balance-amount {
+  font-size: 32px;
+  margin: 10px 0;
+  letter-spacing: 1px;
+}
+
+.balance-amount.positive { color: white; }
+.balance-amount.negative { color: #ffebee; }
+
+.income-expense-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.income-expense-container > div {
+  flex: 1;
+  text-align: center;
+}
+
+.income-expense-container > div:first-child {
+  border-right: 1px solid rgba(255,255,255, 0.2);
+}
+
+.stat h4 {
+    font-size: 13px;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.money {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.money.plus {
+  color: #fff;
+}
+
+.money.minus {
+  color: #fff;
+}
+
+/* Lịch sử */
+.history-container {
+    margin-bottom: 25px;
+}
+
+.history-container h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.list li {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 12px 15px;
+  margin: 8px 0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  align-items: center;
+}
+
+.list li:hover {
+  background-color: #ededed;
+}
+
+.list li.plus {
+  border-right: 5px solid var(--income-color);
+}
+
+.list li.minus {
+  border-right: 5px solid var(--expense-color);
+}
+
+.transaction-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.transaction-info i {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.list li.plus .transaction-info i { color: var(--income-color); }
+.list li.minus .transaction-info i { color: var(--expense-color); }
+
+.transaction-amount {
+    font-weight: bold;
+}
+
+/* CSS mới để sửa lỗi nút xóa */
+.transaction-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-right: 35px; /* Tạo khoảng trống cho nút xóa */
+}
+
+/* Đảm bảo nút xóa luôn ở vị trí chính xác */
+.delete-btn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.list li:hover .delete-btn {
+    opacity: 1;
+}
+
+/* Form */
+.form-container h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+input[type='text'],
+input[type='number'],
+select {
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  display: block;
+  font-size: 15px;
+  padding: 10px;
+  width: 100%;
+  outline: none;
+}
+
+input:focus, select:focus {
+    border-color: var(--primary-color);
+}
+
+.form-control {
+    margin-bottom: 12px;
+}
+
+.form-control-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.input-group {
+    flex: 1;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.unit {
+    color: #999;
+}
+
+.btn {
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: 0;
+  display: block;
+  font-size: 16px;
+  margin-top: 20px;
+  padding: 12px;
+  width: 100%;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #1b5e20;
+}
+
+.btn:active {
+  transform: scale(0.99);
+}
+
+/* Thông báo */
+.form-messages {
+    margin-bottom: 15px;
+    border-radius: 6px;
+    padding: 0px;
+}
+
+.form-messages p {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.form-messages.error {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+    padding: 10px;
+}
+
+.form-messages.success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+    padding: 10px;
+}
