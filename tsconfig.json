@@ -7,8 +7,9 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "ES6",
+    "module": "ESNext",
     "target": "ES6",
+    "moduleResolution": "node", // Thêm dòng này để TS tìm file thông minh hơn
     "types": [],
     // For nodejs:
     // "lib": ["esnext"],
@@ -35,7 +36,7 @@
     // Recommended Options
     "strict": true,
     "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",

@@ -3,67 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Wallet | Quản lý Chi tiêu Cá nhân</title>
-    <link rel="stylesheet" href="src/styles.css">
+    <title>Quản Lý Tài Chính Cá Nhân Pro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
-
     <div class="container">
         <header>
-            <h1><i class="fas fa-wallet"></i> Ví Điện Tử Của Tôi</h1>
+            <h1>📊 Quản Lý Tài Chính Cá Nhân</h1>
         </header>
 
-        <div class="balance-container">
-            <h4>Số Dư Hiện Tại</h4>
-            <h1 id="balance" class="balance-amount">$0.00</h1>
-            
-            <div class="income-expense-container">
-                <div class="stat income">
-                    <h4><i class="fas fa-plus-circle"></i> THU NHẬP</h4>
-                    <p id="money-plus" class="money plus">+$0.00</p>
-                </div>
-                <div class="stat expense">
-                    <h4><i class="fas fa-minus-circle"></i> CHI TIÊU</h4>
-                    <p id="money-minus" class="money minus">-$0.00</p>
-                </div>
+        <section class="card filter-section">
+            <label for="month-picker">📅 Chọn tháng:</label>
+            <input type="month" id="month-picker" value="2026-03">
+        </section>
+
+        <section class="card budget-section">
+            <div class="input-group">
+                <label>💰 Ngân sách tháng:</label>
+                <input type="number" id="budget-input" placeholder="VD: 5000000">
+                <button id="save-budget" class="btn-primary">Lưu</button>
             </div>
-        </div>
+            <div class="remaining-display">
+                <p>Số tiền còn lại</p>
+                <h2 id="remaining-amount">0 VND</h2>
+            </div>
+        </section>
 
-        <div class="history-container">
-            <h3>Lịch sử Giao dịch</h3>
-            <ul id="list" class="list">
-                </ul>
-        </div>
-
-        <div class="form-container">
-            <h3><i class="fas fa-plus"></i> Thêm Giao dịch Mới</h3>
-            <form id="form">
-                <div class="form-control">
-                    <label for="text">Tên giao dịch</label>
-                    <input type="text" id="text" placeholder="Ví dụ: Ăn sáng, Lương, Mua sách..." />
+        <section class="card category-section">
+            <h3><i class="fas fa-briefcase"></i> Quản lý danh mục (theo tháng)</h3>
+            <div class="input-row">
+                <input type="text" id="cat-name" placeholder="Tên danh mục">
+                <input type="number" id="cat-limit" placeholder="Giới hạn (VND)">
+                <button id="add-category" class="btn-success">Thêm danh mục</button>
+            </div>
+            <div id="category-list" class="list-container">
                 </div>
-                
-                <div class="form-control-row">
-                    <div class="input-group">
-                        <label for="amount">Số tiền (<span class="unit">VND</span>)</label>
-                        <input type="number" id="amount" placeholder="Nhập số tiền..." />
-                    </div>
-                    <div class="input-group">
-                        <label for="type">Loại</label>
-                        <select id="type">
-                            <option value="EXPENSE" selected>Chi tiêu (-)</option>
-                            <option value="INCOME">Thu nhập (+)</option>
-                        </select>
-                    </div>
+        </section>
+
+        <section class="card transaction-form">
+            <div class="input-row">
+                <input type="number" id="trans-amount" placeholder="Số tiền">
+                <select id="trans-category">
+                    <option value="">-- Chọn danh mục --</option>
+                </select>
+                <input type="text" id="trans-note" placeholder="Ghi chú">
+                <button id="add-transaction" class="btn-blue">Thêm</button>
+            </div>
+        </section>
+
+        <section class="card history-section">
+            <h3>📋 Lịch sử giao dịch</h3>
+            <div id="transaction-list" class="list-container">
                 </div>
+            <div id="alert-container"></div>
+        </section>
 
-                <div class="form-messages" id="form-messages"></div>
-
-                <button class="btn">Thêm Giao dịch</button>
-            </form>
-        </div>
+        <section class="card summary-section">
+            <h3>📅 Thống kê chi tiêu các tháng</h3>
+            <table id="summary-table">
+                <thead>
+                    <tr>
+                        <th>Tháng</th>
+                        <th>Chi tiêu</th>
+                        <th>Ngân sách</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody id="summary-body">
+                    </tbody>
+            </table>
+        </section>
     </div>
 
-    <script type="module" src="dist/app.js"></script> </body>
+    <script type="module" src="dist/app.js" defer></script>
+</body>
 </html>
